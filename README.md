@@ -35,6 +35,7 @@ if you are opening your external SSL port to signals it might be useful to filte
 you can test the internal API like so:
 
 endpoint test:
+
 `curl http://localhost:8080/api/test`
 
 signal test:
@@ -50,12 +51,15 @@ pub struct SignalData {
     pub amount: f64,                 // Amount as a floating-point number
     pub price: f64,                  // Price at signal time as a floating-point number
     pub current_alert_number: i32,   // Current alert number as an integer
+}
 ```
 
 signals are from trading view in this format:
+
 `NAME {{interval}} EXHCANGE SIDE {{ticker}} AMOUNT {{close}} ALERTNUMBER`
 
-so a typical entry in trading view might be: 
+so a typical entry in trading view might be:
+
 `SMA {{interval}} binance sell {{ticker}} 1000 {{close}} 1`
 
 you can test your endpoint without trading view:
@@ -70,5 +74,6 @@ to test retrieving a doc you can do this:
 `curl -v http://localhost:8080/api/get_file/test.txt`
 
 to test killing your entire database(WARNING!!!!) you can do this:
+
 `curl http://localhost:8080/api/clear_database`
 
