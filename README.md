@@ -5,7 +5,7 @@ simple backend that
 1. records some signals from trading view and puts them in influxdb.
 2. sets up an internal API for a react front end (badly).
 3. serves html and txt to the front end and does some other stuff
-4. has a few tests of the barter-rs system in the bin folder, these were corrupted in a moment of luser fail and temporarily dead.
+4. has a few tests of the barter-rs system in the bin folder, these were corrupted in a moment of l-user fail and temporarily dead.
 
 it uses two servers for external and internal, dont ask me why. the internal communication is not encrypted.
 
@@ -13,12 +13,12 @@ it uses two servers for external and internal, dont ask me why. the internal com
 
 you must have a .env file with your credentials in and the location of your SSL key:
 
-  INFLUXDB_HOST="http://localhost:8086"
-  INFLUXDB_ORG=""
-  INFLUXDB_TOKEN=""
+`INFLUXDB_HOST="http://localhost:8086"`
+`INFLUXDB_ORG=""`
+`INFLUXDB_TOKEN=""`
 
-  SSL_PUB=""
-  SSL_PRV=""
+`SSL_PUB=""`
+`SSL_PRV=""`
 
 
 # External Port:
@@ -35,7 +35,7 @@ if you are opening your external SSL port to signals it might be useful to filte
 you can test the internal API like so:
 
 endpoint test:
- curl http://localhost:8080/api/test
+ `curl http://localhost:8080/api/test`
 
 signal test:
 
@@ -51,22 +51,22 @@ signals are stored in influxdb like this:
         .timestamp(now.timestamp_nanos_opt().unwrap_or(0))
 
 signals are from trading view in this format:
- NAME {{interval}} EXHCANGE SIDE {{ticker}} AMOUNT {{close}} ALERTNUMBER
+`NAME {{interval}} EXHCANGE SIDE {{ticker}} AMOUNT {{close}} ALERTNUMBER`
 
 so a typical entry in trading view might be: 
- SMA {{interval}} binance sell {{ticker}} 1000 {{close}} 1
+`SMA {{interval}} binance sell {{ticker}} 1000 {{close}} 1`
 
 you can test your endpoint without trading view:
- curl -k -X POST -d 'WOOHA 3 kucoin sell AVAXUSDT 1000 32.1 1' https://localhost:1025/
+`curl -k -X POST -d 'WOOHA 3 kucoin sell AVAXUSDT 1000 32.1 1' https://localhost:1025/`
 
 to test getting a list of doc files from your public/documents/ folder you can do this:
 
- curl http://localhost:8080/api/get_docs
+`curl http://localhost:8080/api/get_docs`
 
-to test retriveing a doc you can do this:
+to test retrieving a doc you can do this:
 
- curl -v http://localhost:8080/api/get_file/test.txt
+`curl -v http://localhost:8080/api/get_file/test.txt`
 
 to test killing your entire database(WARNING!!!!) you can do this:
- curl http://localhost:8080/api/clear_database
+`curl http://localhost:8080/api/clear_database`
 
