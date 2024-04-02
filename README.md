@@ -63,6 +63,7 @@ so a typical entry in trading view might be:
 `SMA {{interval}} binance sell {{ticker}} 1000 {{close}} 1`
 
 you can test your endpoint without trading view:
+
 `curl -k -X POST -d 'WOOHA 3 kucoin sell AVAXUSDT 1000 32.1 1' https://localhost:1025/`
 
 to test getting a list of doc files from your public/documents/ folder you can do this:
