@@ -12,30 +12,30 @@ it uses two servers for external and internal, dont ask me why. the internal com
 # .env 
 
 you must have a .env file with your credentials in and the location of your SSL key:
+```
+INFLUXDB_HOST="http://localhost:8086"
+INFLUXDB_ORG=""
+INFLUXDB_TOKEN=""
 
-`INFLUXDB_HOST="http://localhost:8086"`
-`INFLUXDB_ORG=""`
-`INFLUXDB_TOKEN=""`
-
-`SSL_PUB=""`
-`SSL_PRV=""`
-
+SSL_PUB=""
+SSL_PRV=""
+```
 
 # External Port:
 It's on port 1025 for now and you can forward external SSL to it. 
 
 if you are opening your external SSL port to signals it might be useful to filter out anything but these trading view IP addresses:
-
+```
  52.89.214.238             
  34.212.75.30              
  54.218.53.128             
  52.32.178.7               
-
+```
 # Internal API
 you can test the internal API like so:
 
 endpoint test:
- `curl http://localhost:8080/api/test`
+`curl http://localhost:8080/api/test`
 
 signal test:
 
