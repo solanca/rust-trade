@@ -40,15 +40,17 @@ endpoint test:
 signal test:
 
 signals are stored in influxdb like this: 
-        .tag("strat", &signal_data.strat) // strategy name, arbitrary string
-        .tag("timescale", &signal_data.timescale) // timescale in seconds
-        .tag("exchange", &signal_data.exchange) // lowercase exchange name
-        .tag("alert_type", &signal_data.alert_type) // buy or sell
-        .tag("pair", &signal_data.pair)
-        .field("amount", signal_data.amount as f64)
-        .field("price", signal_data.price as f64)
-        .field("current_alert_number", signal_data.current_alert_number as i64)
-        .timestamp(now.timestamp_nanos_opt().unwrap_or(0))
+```
+pub struct SignalData {
+    pub strat: String,               // Strategy name or identifier
+    pub timescale: String,           // Timescale, e.g., in minutes 1,5,240 etc. 
+    pub exchange: String,            // Exchange name, e.g., "binance", "kucoin"
+    pub alert_type: String,          // Type of alert, e.g., "Buy", "Sell"
+    pub pair: String,                // Trading pair, e.g., "BTC-USDT"
+    pub amount: f64,                 // Amount as a floating-point number
+    pub price: f64,                  // Price at signal time as a floating-point number
+    pub current_alert_number: i32,   // Current alert number as an integer
+```
 
 signals are from trading view in this format:
 `NAME {{interval}} EXHCANGE SIDE {{ticker}} AMOUNT {{close}} ALERTNUMBER`
