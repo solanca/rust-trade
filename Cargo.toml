@@ -1,8 +1,49 @@
 [package]
-name = "rust-trade"
+name = "rust_server"
 version = "0.1.0"
 edition = "2021"
 
-# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
-
 [dependencies]
+actix-cors = "0.7.0"
+actix-web = { version = "4", features = ["openssl","macros"] }
+actix-web-actors = "4"
+actix-rt = "2.0"
+actix = "0.13.3"
+actix-files = "0.6.0"
+awc = "3.0.0"
+env_logger = "0.11.2" 
+log = "0.4.17" 
+tracing = "0.1"
+tracing-subscriber = { version = "0.3.18", features = ["env-filter", "json"] }
+dotenv = "0.15.0" 
+
+influxdb2 = "0.5.0"   # For InfluxDB
+influxdb2-structmap = "0.2"
+num-traits = "0.2.18"
+tokio = { version = "1", features = ["full"] }  # For asynchronous operations
+tokio-stream = "0.1.8"
+reqwest = { version = "0.12.1", features = ["json"] } # For HTTP requests
+openssl = "0.10.44"
+serde = { version = "1", features = ["derive"] }  # For data serialization/deserialization
+serde_json = "1.0"  # For JSON serialization/deserialization
+tokio-postgres = { version = "0.7.10", features = ["with-chrono-0_4"] } # For PostgreSQL interaction
+chrono = "0.4"  # For working with timestamps
+futures = "0.3"
+futures-util = "0.3"
+
+barter = "0.8.13"
+barter-data = "0.7"
+barter-execution = "0.3"
+barter-integration = "0.6.2"
+
+[[bin]]
+name = "list-influxdb"
+path = "src/bin/list-influxdb.rs"
+
+[[bin]]
+name = "barter-test"
+path = "src/bin/barter-test.rs"
+
+[[bin]]
+name = "barter-pricetest"
+path = "src/bin/barter-pricetest.rs"
