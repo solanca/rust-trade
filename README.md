@@ -13,12 +13,12 @@ it uses two servers for external and internal, dont ask me why. the internal com
 
 you must have a .env file with your credentials in and the location of your SSL key:
 
- INFLUXDB_HOST="http://localhost:8086"
- INFLUXDB_ORG=""
- INFLUXDB_TOKEN=""
+  INFLUXDB_HOST="http://localhost:8086"
+  INFLUXDB_ORG=""
+  INFLUXDB_TOKEN=""
 
- SSL_PUB=""
- SSL_PRV=""
+  SSL_PUB=""
+  SSL_PRV=""
 
 
 # External Port:
